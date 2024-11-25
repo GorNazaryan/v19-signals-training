@@ -1,1 +1,325 @@
 /* You can add global styles to this file, and also import other style files */
+.table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Header Styles */
+.table thead th {
+    background-color: #f8f9fa;
+    color: #2d3748;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Row Styles */
+.table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.table tbody tr:hover {
+    background-color: #edf2f7;
+}
+
+/* Cell Styles */
+.table td {
+    padding: 1rem;
+    color: #4a5568;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .table thead th,
+    .table tbody td {
+        padding: 0.75rem;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+}
+
+.table .action-cell {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.table .action-button {
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
+    border-radius: 4px;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.table .action-button:hover {
+    background-color: #e2e8f0;
+}
+
+/* Form Control Base Styles */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Focus State */
+.form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Hover State */
+.form-control:hover:not(:disabled) {
+    border-color: #d1d5db;
+}
+
+/* Disabled State */
+.form-control:disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Error State */
+.form-control.error {
+    border-color: #ef4444;
+}
+
+.form-control.error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success State */
+.form-control.success {
+    border-color: #10b981;
+}
+
+.form-control.success:focus {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Textarea Specific */
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Input Sizes */
+.form-control.small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.form-control.large {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+/* Required Label */
+.form-label.required::after {
+    content: "*";
+    color: #ef4444;
+    margin-left: 0.25rem;
+}
+
+/* Help Text */
+.help-text {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Error Message */
+.error-message {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #ef4444;
+}
+
+/* Input with Icon */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper .form-control {
+    padding-left: 2.5rem;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Search Input */
+.search-input {
+    padding-left: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    background-size: 1.25rem;
+}
+
+/* Input with Clear Button */
+.clearable-input {
+    position: relative;
+}
+
+.clear-button {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-button:hover {
+    color: #6b7280;
+}
+
+/* Character Count */
+.char-count {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.5rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Read-only Input */
+.form-control[readonly] {
+    background-color: #f9fafb;
+    cursor: default;
+}
+
+/* Placeholder Styling */
+.form-control::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+/* Dark Mode (Optional) */
+@media (prefers-color-scheme: dark) {
+    .form-control {
+        background-color: #1f2937;
+        border-color: #374151;
+        color: #f3f4f6;
+    }
+
+    .form-control:hover:not(:disabled) {
+        border-color: #4b5563;
+    }
+
+    .form-control:disabled {
+        background-color: #374151;
+    }
+
+    .form-label {
+        color: #e5e7eb;
+    }
+
+    .help-text {
+        color: #9ca3af;
+    }
+
+    .form-control::placeholder {
+        color: #6b7280;
+    }
+}
+
+.caption-content {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    caption-side: top;
+}
+
+/* Search Container */
+.caption-search {
+    max-width: 300px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}

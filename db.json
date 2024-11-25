@@ -1,0 +1,60 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Task 1",
+      "description": "Task 1 description",
+      "labels": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Task 2",
+      "description": "Task 2 description jan",
+      "labels": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Task 3",
+      "description": "Task 3 description",
+      "labels": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "b0a8",
+      "name": "eerg",
+      "description": "ergerg",
+      "labels": [
+        "3"
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "id": "1",
+      "name": "Label 1"
+    },
+    {
+      "id": "2",
+      "name": "Label 2"
+    },
+    {
+      "id": "3",
+      "name": "Label 3"
+    },
+    {
+      "id": "4",
+      "name": "Label 4"
+    }
+  ]
+}
