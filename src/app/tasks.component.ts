@@ -1,8 +1,8 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { TaskService } from "./tasks.service";
-import { Task } from "./types";
 import { RouterLink } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { rxResource } from "@angular/core/rxjs-interop";
 
 @Component({
   template: `
@@ -17,7 +17,6 @@ import { FormsModule } from "@angular/forms";
               class="form-control search-input"
               placeholder="Search tasks..."
               [(ngModel)]="query"
-              (ngModelChange)="search()"
             />
           </div>
           <a routerLink="/tasks/new" class="btn-primary">Add Task</a>
@@ -32,7 +31,7 @@ import { FormsModule } from "@angular/forms";
           </tr>
         </thead>
         <tbody>
-          @for (task of tasks; track task.id) {
+          @for (task of tasksResource.value(); track task.id) {
             <tr>
                 <td>{{ task.id }}</td>
                 <td>{{ task.name }}</td>
@@ -51,30 +50,23 @@ import { FormsModule } from "@angular/forms";
   `,
   imports: [RouterLink, FormsModule],
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent {
   private readonly tasksService = inject(TaskService);
-  tasks: Task[] = [];
-  query = '';
-
-  ngOnInit(): void {
-    this.getTasks();
-  }
+  query = signal('');
+  tasksResource = rxResource({
+    request: () => ({ query: this.query() }),
+    loader: (params) => {
+      if (params.request.query) {
+        return this.tasksService.getTasksByName(params.request.query);
+      } else {
+        return this.tasksService.getAllTasks();
+      }
+    }
+  });
 
   deleteTask(id: number): void {
     this.tasksService.deleteTask(id).subscribe(() => {
-      this.getTasks();
-    });
-  }
-
-  search() {
-    this.tasksService.getTasksByName(this.query).subscribe((tasks) => {
-      this.tasks = tasks;
-    });
-  }
-
-  private getTasks() {
-    this.tasksService.getAllTasks().subscribe((tasks) => {
-      this.tasks = tasks;
+      this.tasksResource.reload();
     });
   }
 }
